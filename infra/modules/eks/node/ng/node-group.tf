@@ -11,7 +11,6 @@ resource "aws_eks_node_group" "eks_node_group" {
     ec2_ssh_key     = "erikson"
   }
   
-  
   subnet_ids = var.private_subnet
 
 
