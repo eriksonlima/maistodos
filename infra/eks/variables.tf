@@ -21,7 +21,7 @@ variable "cluster_endpoint_public_access" {
 variable "image_id" {
   type = string
   description = "Instance Image ID"
-  default     = "ami-0082fe83ca6d7cf7d"
+  default     = "ami-0bd3c2e379f7f09c9"
 }
 
 variable "eks_node_role_name" {
