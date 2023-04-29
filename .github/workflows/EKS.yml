@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - 'infra/modules/**'
       - 'infra/network/**'
-      - 'infra/ec2/**
+      - 'infra/ec2/**'
       - '.github/workflows/NETWORK.yml'
       - '.github/workflows/EC2.yml' 
 
