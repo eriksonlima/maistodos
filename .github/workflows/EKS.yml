@@ -40,3 +40,4 @@ jobs:
       run: |
         cd infra/eks
         terraform apply -auto-approve
+        
