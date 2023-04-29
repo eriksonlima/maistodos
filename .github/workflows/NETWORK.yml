@@ -17,7 +17,7 @@ jobs:
   
  Deploy:
     name: 'Deploy'
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Branch 
@@ -30,6 +30,7 @@ jobs:
     
     - name: Terraform plan 
       run: |
+        cd infra/network
         terraform init
         terraform validate
         terraform plan -out=plan.tfplan
@@ -37,4 +38,5 @@ jobs:
     - if: github.ref == 'refs/heads/master'
       name: Terraform apply
       run: |
+        cd infra/network
         terraform apply -auto-approve
