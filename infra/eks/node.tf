@@ -1,5 +1,5 @@
 module "node_metabase" {
-  source = "/infra/modules/eks/node"
+  source = "infra/modules/eks/node"
 
 //Node
   node_name           = var.node_name
