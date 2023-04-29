@@ -32,7 +32,7 @@ terraform {
 }
 
 module "aws-auth" {
-  source = "./infra/modules/eks/aws-auth"
+  source = "/infra/modules/eks/aws-auth"
 
   map_additional_iam_roles = var.map_additional_iam_roles
   map_additional_iam_users = var.map_additional_iam_users
