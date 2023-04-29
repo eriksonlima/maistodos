@@ -38,7 +38,7 @@ resource "aws_eip" "eip_nat_subnet_public_1c" {
 
 resource "aws_nat_gateway" "nat_subnet_app_1a" {
   allocation_id = aws_eip.eip_nat_subnet_public_1a.id
-  subnet_id = aws_subnet.private_app_1a.id
+  subnet_id = aws_subnet.public_1a.id
   tags = merge(
     local.tags,
     {Name = "${local.project_name}/${local.environment}/nat_subnet_app_1a"}
@@ -47,7 +47,7 @@ resource "aws_nat_gateway" "nat_subnet_app_1a" {
 
 resource "aws_nat_gateway" "nat_subnet_app_1c" {
   allocation_id = aws_eip.eip_nat_subnet_public_1c.id
-  subnet_id = aws_subnet.private_app_1c.id
+  subnet_id = aws_subnet.public_1c.id
   tags = merge(
     local.tags,
     {Name = "${local.project_name}/${local.environment}/nat_subnet_app_1c"}
