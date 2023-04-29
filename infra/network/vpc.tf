@@ -85,8 +85,7 @@ resource "aws_route_table" "rtb_subnet_app_private_1a" {
     { Name = "${local.project_name}/${local.environment}/rtb_subnet_app_private_1a" }
   )
   vpc_id          = aws_vpc.main.id
-  cidr_block      = "0.0.0.0/0"
-  nat_gateway_id  = aws_nat_gateway.nat_subnet_app_1a.id
+  route = [{cidr_block = "0.0.0.0/0"},{nat_gateway_id = aws_nat_gateway.nat_subnet_app_1a.id}]
   depends_on      = [aws_nat_gateway.nat_subnet_app_1a]
 }
 
@@ -96,8 +95,7 @@ resource "aws_route_table" "rtb_subnet_app_private_1c" {
     { Name = "${local.project_name}/${local.environment}/rtb_subnet_app_private_1c" }
   )
   vpc_id     = aws_vpc.main.id
-  cidr_block      = "0.0.0.0/0"
-  nat_gateway_id = aws_nat_gateway.nat_subnet_app_1c.id
+  route = [{cidr_block = "0.0.0.0/0"},{nat_gateway_id = aws_nat_gateway.nat_subnet_app_1c.id}]
   depends_on = [aws_nat_gateway.nat_subnet_app_1c]
 }
 
@@ -108,7 +106,7 @@ resource "aws_route_table" "rtb_subnet_db_private_1a" {
   )
   vpc_id     = aws_vpc.main.id
   cidr_block      = "0.0.0.0/0"
-  nat_gateway_id = aws_nat_gateway.nat_subnet_app_1a.id
+  route = [{cidr_block = "0.0.0.0/0"},{nat_gateway_id = aws_nat_gateway.nat_subnet_app_1a.id}]
   depends_on = [aws_nat_gateway.nat_subnet_db_1a]
 }
 
@@ -118,8 +116,7 @@ resource "aws_route_table" "rtb_subnet_db_private_1c" {
     { Name = "${local.project_name}/${local.environment}/rtb_subnet_db_private_1c" }
   )
   vpc_id     = aws_vpc.main.id
-  cidr_block      = "0.0.0.0/0"
-  nat_gateway_id = aws_nat_gateway.nat_subnet_app_1c.id
+  route = [{cidr_block = "0.0.0.0/0"},{nat_gateway_id = aws_nat_gateway.nat_subnet_app_1c.id}]
   depends_on = [aws_nat_gateway.nat_subnet_db_1c]
 }
 
