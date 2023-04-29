@@ -20,10 +20,19 @@ terraform {
     encrypt        = true
     key            = "eks/terraform-eks.tfstate"
   }
+
+  required_version = "~> 1.4.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.65.0"
+    }
+  }
 }
 
 module "aws-auth" {
-  source = "infra/modules/eks/aws-auth"
+  source = ".infra/modules/eks/aws-auth"
 
   map_additional_iam_roles = var.map_additional_iam_roles
   map_additional_iam_users = var.map_additional_iam_users
