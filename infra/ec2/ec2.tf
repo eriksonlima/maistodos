@@ -4,7 +4,7 @@ resource "aws_instance" "maistodos_git_runner" {
   subnet_id = data.aws_subnet.pub1.id
   key_name = "erikson"
   associate_public_ip_address = true
-  vpc_security_group_ids = aws_security_group.acesso_ec2_sg.id
+  vpc_security_group_ids = data.aws_secutiry_group.acesso_ec2_sg.id
   
   tags = merge(
     local.tags,
