@@ -1,5 +1,5 @@
 module "master" {
-  source = "infra/modules/eks/master"
+  source = "./modules/eks/master"
 
   master_role_name   = var.master_role_name
   cluster_name       = var.cluster_name
