@@ -6,8 +6,8 @@ resource "aws_subnet" "public_1a" {
   tags = merge(
     local.tags,
     { Name = "${local.project_name}/${local.environment}/public_1a" },
-    { kubernetes.io/cluster/my-cluster = "shared"},
-    { kubernetes.io/role/internal-elb = 1 }
+    { "kubernetes.io/cluster/my-cluster" = "shared"},
+    { "kubernetes.io/role/internal-elb" = 1 }
   )
 }
 resource "aws_route_table_association" "public_1a" {
@@ -26,8 +26,8 @@ resource "aws_subnet" "public_1c" {
   tags = merge(
     local.tags,
     { Name = "${local.project_name}/${local.environment}/public_1c" },
-    { kubernetes.io/cluster/my-cluster = "shared"},
-    { kubernetes.io/role/internal-elb = 1 }
+    { "kubernetes.io/cluster/my-cluster" = "shared"},
+    { "kubernetes.io/role/internal-elb" = 1 }
   )
 }
 
@@ -49,8 +49,8 @@ resource "aws_subnet" "private_app_1a" {
   tags = merge(
     local.tags,
     { Name = "${local.project_name}/${local.environment}/private_app_1a" },
-    { kubernetes.io/cluster/my-cluster = "shared"},
-    { kubernetes.io/role/internal-elb = 1 }
+    { "kubernetes.io/cluster/my-cluster" = "shared"},
+    { "kubernetes.io/role/internal-elb" = 1 }
   )
 }
 resource "aws_route_table_association" "private_app_1a" {
@@ -71,8 +71,8 @@ resource "aws_subnet" "private_app_1c" {
   tags = merge(
     local.tags,
     { Name = "${local.project_name}/${local.environment}/private_app_1c" },
-    { kubernetes.io/cluster/my-cluster = "shared"},
-    { kubernetes.io/role/internal-elb = 1 }
+    { "kubernetes.io/cluster/my-cluster" = "shared"},
+    { "kubernetes.io/role/internal-elb" = 1 }
   )
 }
 resource "aws_route_table_association" "private_app_1c" {
