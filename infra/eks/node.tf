@@ -10,6 +10,7 @@ module "node_metabase" {
   environment = var.environment
   private_subnet = tolist([data.aws_subnet.priv1.id, data.aws_subnet.priv2.id])
   eks_node_role_name = var.eks_node_role_name
+  key_name = "erikson"
 
 //Launch
   kubernetes_version  = var.kubernetes_version

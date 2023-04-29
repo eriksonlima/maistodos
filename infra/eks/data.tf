@@ -29,4 +29,3 @@ data "aws_subnet" "priv2" {
 data "aws_security_group" "acesso_eks" {
   name = "acesso-eks-sg"
 }
-
