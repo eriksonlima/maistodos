@@ -1,6 +1,6 @@
 resource "aws_security_group" "acesso_ec2_sg" {
   name      = "acesso-ec2-sg"
-  vpc_id    = aws_vpc.main.id
+  vpc_id    = data.aws_vpc.main.id
 
   ingress {
     from_port   = "22"
