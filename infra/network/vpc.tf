@@ -25,7 +25,7 @@ resource "aws_nat_gateway" "nat_subnet_app_1a" {
   subnet_id = aws_subnet.private_app_1a.id
   tags = merge(
     local.tags,
-    {Name = "${local.projet_name}/${local.environment}/nat_subnet_app_1a"}
+    {Name = "${local.project_name}/${local.environment}/nat_subnet_app_1a"}
   )
 }
 
@@ -34,7 +34,7 @@ resource "aws_nat_gateway" "nat_subnet_app_1c" {
   subnet_id = aws_subnet.private_app_1c.id
   tags = merge(
     local.tags,
-    {Name = "${local.projet_name}/${local.environment}/nat_subnet_app_1c"}
+    {Name = "${local.project_name}/${local.environment}/nat_subnet_app_1c"}
   )
 }
 
@@ -43,7 +43,7 @@ resource "aws_nat_gateway" "nat_subnet_db_1a" {
   subnet_id = aws_subnet.private_db_1a.id
   tags = merge(
     local.tags,
-    {Name = "${local.projet_name}/${local.environment}/nat_subnet_db_1a"}
+    {Name = "${local.project_name}/${local.environment}/nat_subnet_db_1a"}
   )
 }
 
@@ -52,7 +52,7 @@ resource "aws_nat_gateway" "nat_subnet_db_1c" {
   subnet_id = aws_subnet.private_db_1c.id
   tags = merge(
     local.tags,
-    {Name = "${local.projet_name}/${local.environment}/nat_subnet_db_1c"}
+    {Name = "${local.project_name}/${local.environment}/nat_subnet_db_1c"}
   )
 }
 
@@ -60,7 +60,7 @@ resource "aws_default_route_table" "main" {
   default_route_table_id = aws_route_table.public.id
   tags = merge(
     local.tags,
-    {Name = "${local.projet_name}/${local.environment}/default"}
+    {Name = "${local.project_name}/${local.environment}/default"}
   )
 }
 
