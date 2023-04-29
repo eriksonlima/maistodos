@@ -6,7 +6,8 @@ resource "aws_security_group" "acesso_eks_sg" {
     from_port   = "0"
     to_port     = "0"
     protocol    = "-1"
-    cidr_blocks = [aws_vpc.main.cidr_block]
+    self = true
+    security_groups = [data.security_groups.acesso_eks_sg.id, data.security_groups.acesso_ec2_sg.id]
   }
 
   egress {
