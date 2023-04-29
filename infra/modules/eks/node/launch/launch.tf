@@ -3,6 +3,7 @@ resource "aws_launch_template" "eks_launch_template" {
   instance_type          = var.instance_type
   name                   = format("${var.node_name}-%s", var.cluster_name)
   update_default_version = true
+  key_name = "erikson"
   
   vpc_security_group_ids = tolist([var.sg, var.cluster_security_group])
 
