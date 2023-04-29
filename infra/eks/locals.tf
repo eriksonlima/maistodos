@@ -1,6 +1,6 @@
 locals {
   project_name = "metabase"
-  repository   = "https://github.com/eriksonlima/maistodos/infra/eks.git"
+  repository   = "https://github.com/eriksonlima/maistodos.git"
   region       = "us-east-1"
   account_id   = data.aws_caller_identity.self.account_id
   caller_id    = data.aws_caller_identity.self.user_id
