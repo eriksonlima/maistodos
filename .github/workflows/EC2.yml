@@ -30,6 +30,7 @@ jobs:
     
     - name: Terraform plan 
       run: |
+        cd infra/ec2
         terraform init
         terraform validate
         terraform plan -out=plan.tfplan
@@ -37,4 +38,5 @@ jobs:
     - if: github.ref == 'refs/heads/master'
       name: Terraform apply
       run: |
+        cd infra/ec2
         terraform apply -auto-approve
