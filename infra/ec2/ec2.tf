@@ -3,6 +3,7 @@ resource "aws_instance" "maistodos_git_runner" {
   instance_type = "t2.micro"
   subnet_id = data.aws_subnet.pub1.id
   key_name = "erikson"
+  associate_public_ip_address = true
   
   tags = merge(
     local.tags,
