@@ -8,6 +8,6 @@ data "aws_subnet" "pub1" {
 data "aws_vpc" "main" {
   filter {
     name = "tag:Name"
-    values = ["metabase/default/main"]
+    values = ["metabase/default"]
   }
 }
