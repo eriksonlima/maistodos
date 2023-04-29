@@ -1,5 +1,5 @@
 resource "aws_instance" "maistodos_git_runner" {
-  ami = "ami-0b3e6ce892a9ee4e0"
+  ami = "ami-02396cdd13e9a1257"
   instance_type = "t2.micro"
   subnet_id = data.aws_subnet.pub1.id
   key_name = "erikson"
