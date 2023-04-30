@@ -1,6 +1,6 @@
-data "aws_security_group" "acesso_ec2_sg" {
+data "aws_vpc" "main" {
   filter {
-    name   = "group-name"
-    values = ["acesso-ec2-sg"]
+    name = "tag:Name"
+    values = ["metabase/default"]
   }
 }
