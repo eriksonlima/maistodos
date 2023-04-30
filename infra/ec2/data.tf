@@ -18,3 +18,10 @@ data "aws_security_group" "acesso_ec2_sg" {
     values = ["acesso-ec2-sg"]
   }
 }
+
+data "aws_security_group" "acesso_eks_sg" {
+  filter {
+    name = "group-name"
+    values = ["acesso-eks-sg"]
+  }
+}
