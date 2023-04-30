@@ -10,7 +10,4 @@ resource "aws_instance" "maistodos_git_runner" {
     local.tags,
     { Name = "${local.project_name}/${local.environment}/git-runner"}
   )
-  depends_on = [
-    aws_security_group.acesso_ec2_sg
-  ]
 }

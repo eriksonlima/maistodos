@@ -11,3 +11,10 @@ data "aws_vpc" "main" {
     values = ["metabase/default"]
   }
 }
+
+data "aws_security_group" "acesso_ec2_sg" {
+  filter {
+    name = "name"
+    values = ["acesso-ec2-sg"]
+  }
+}
