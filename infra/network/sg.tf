@@ -7,7 +7,6 @@ resource "aws_security_group" "acesso_eks_sg" {
     to_port     = "0"
     protocol    = "-1"
     self = true
-    security_groups = [data.aws_security_group.acesso_ec2_sg.id]
   }
 
   egress {
