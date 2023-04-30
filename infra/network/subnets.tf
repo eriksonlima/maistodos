@@ -7,7 +7,7 @@ resource "aws_subnet" "public_1a" {
     local.tags,
     { Name = "${local.project_name}/${local.environment}/public_1a" },
     { "kubernetes.io/cluster/maistodos" = "shared"},
-    { "kubernetes.io/role/internal-elb" = 1 }
+    { "kubernetes.io/role/elb" = 1 }
   )
 }
 resource "aws_route_table_association" "public_1a" {
@@ -27,7 +27,7 @@ resource "aws_subnet" "public_1c" {
     local.tags,
     { Name = "${local.project_name}/${local.environment}/public_1c" },
     { "kubernetes.io/cluster/maistodos" = "shared"},
-    { "kubernetes.io/role/internal-elb" = 1 }
+    { "kubernetes.io/role/elb" = 1 }
   )
 }
 
