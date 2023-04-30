@@ -17,7 +17,7 @@ jobs:
   
  Deploy:
     name: 'Deploy'
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Branch 
@@ -40,3 +40,4 @@ jobs:
       run: |
         cd infra/eks
         terraform destroy -auto-approve
+        
