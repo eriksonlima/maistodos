@@ -37,7 +37,7 @@ variable "master_role_name" {
 //Node Metabase
 variable "instance_type" {
   type    = string
-  default = "t2.micro"
+  default = "t3a.medium"
 }
 variable "node_name"{
   type    = string
