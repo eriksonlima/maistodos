@@ -1,5 +1,3 @@
-FROM metabase:latest
-
 FROM metabase/metabase:latest
 
 ARG environment
