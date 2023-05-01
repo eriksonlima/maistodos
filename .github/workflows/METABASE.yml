@@ -45,7 +45,7 @@ jobs:
         run: |
           echo export IMAGE_TAG="SNAPSHOT-$(git rev-parse --short "$GITHUB_SHA")" > image.env
           source image.env
-          docker build --file Dockerfile --build-arg repo=${{ github.event.repository.name }} --build-arg environment=prd --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build --file ./metabase/Dockerfile --build-arg repo=${{ github.event.repository.name }} --build-arg environment=prd --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       # Upload files to git hub arctifact
 
@@ -99,7 +99,7 @@ jobs:
           git push https://github.com/eriksonlima/maistodos.git HEAD:master
           
   argocd_refresh:
-    runs-on: prd-korporate
+    runs-on: self-hosted
     needs: argocd_setup
     steps:
       - name: Login ArgoCD and Refresh
