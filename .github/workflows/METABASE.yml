@@ -43,7 +43,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          git clone https://github.com/eriksonlima/maistodos.git
+        
           echo export IMAGE_TAG="SNAPSHOT-$(git rev-parse --short "$GITHUB_SHA")" > image.env
           source image.env
           docker build --file ./metabase/Dockerfile --build-arg repo=${{ github.event.repository.name }} --build-arg environment=prd --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -85,8 +85,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          git clone https://github.com/eriksonlima/maistodos.git
-          
+        
           #Set TAG Image
           source ${{ github.workspace }}/image.env/image.env
           newTag=$(echo $IMAGE_TAG | cut -d ':' -f2)
