@@ -89,8 +89,8 @@ jobs:
           #Set TAG Image
           source ${{ github.workspace }}/image.env/image.env
           newTag=$(echo $IMAGE_TAG | cut -d ':' -f2)
-          oldTag=$(grep -m1 -e "newTag:" ./maistodos/infra/PRD_Argo_Configs/deployments/desafio-maistodos/metabase/${{ github.event.repository.name }}/overlays/kustomization.yaml | cut -d ':' -f2)
-          sed -i "s|$oldTag| $newTag|" ./maistodos/infra/PRD_Argo_Configs/deployments/desafio-maistodos/metabase/${{ github.event.repository.name }}/overlays/kustomization.yaml
+          oldTag=$(grep -m1 -e "newTag:" ./maistodos/infra/PRD_Argo_Configs/deployments/desafio-maistodos/metabase/overlays/kustomization.yaml | cut -d ':' -f2)
+          sed -i "s|$oldTag| $newTag|" ./maistodos/infra/PRD_Argo_Configs/deployments/desafio-maistodos/metabase/overlays/kustomization.yaml
           cd ./infra/PRD_Argo_Configs 
           #Git Add e Push Project
           git add . && git commit -am "Editando ${{ github.event.repository.name }} em PRD - $newTag"
