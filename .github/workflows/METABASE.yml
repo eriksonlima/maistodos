@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: ${{ github.workspace }}/image.env
+          path: ${{ github.workspace }}
           retention-days: 1
 
    # Deploy stage
@@ -78,7 +78,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: my-artifact
-          path: ${{ github.workspace }}/image.env
+          path: ${{ github.workspace }}
           
       - if: ${{ inputs.apply }} == true
         name: Deploy ${{ github.event.repository.name }} em EKS
