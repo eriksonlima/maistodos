@@ -9,6 +9,8 @@ on:
       - 'infra/eks/**'
       - 'infra/network/**'
       - 'infra/ec2/**'
+      - 'metabase/**'
+      - '.github/workflows/METABASE.yml'
       - '.github/workflows/EKS.yml'  
       - '.github/workflows/NETWORK.yml'
       - '.github/workflows/EC2.yml'

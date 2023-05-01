@@ -9,6 +9,8 @@ on:
       - 'infra/eks/**'
       - 'infra/ec2/**'
       - 'infra/PRD_Argo_Configs/**'
+      - 'metabase/**'
+      - '.github/workflows/METABASE.yml'
       - '.github/workflows/ARGO.yml'
       - '.github/workflows/EKS.yml'
       - '.github/workflows/EC2.yml'   
