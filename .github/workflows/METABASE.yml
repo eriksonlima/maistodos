@@ -43,6 +43,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
+          git clone https://github.com/eriksonlima/maistodos.git
           echo export IMAGE_TAG="SNAPSHOT-$(git rev-parse --short "$GITHUB_SHA")" > image.env
           source image.env
           docker build --file ./metabase/Dockerfile --build-arg repo=${{ github.event.repository.name }} --build-arg environment=prd --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -84,8 +85,6 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          git config --global user.email ${{ secrets.KORPORATE_GITHUB_USER_EMAIL  }}
-          git config --global user.name ${{ secrets.KORPORATE_GITHUB_USER_NAME  }}
           git clone https://github.com/eriksonlima/maistodos.git
           
           #Set TAG Image
@@ -107,4 +106,3 @@ jobs:
           cd /usr/local/bin
           ./argocd login argocd-prd.korporate.tech --username admin --password ${{ secrets.ARGOCD_PASSWORD }}
           ./argocd app get ${{ github.event.repository.name }}-prd --refresh
-          
