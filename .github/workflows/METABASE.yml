@@ -46,7 +46,7 @@ jobs:
           git clone https://github.com/eriksonlima/maistodos.git
           echo export IMAGE_TAG="SNAPSHOT-$(git rev-parse --short "$GITHUB_SHA")" > image.env
           source image.env
-          docker build --file ./metabase/Dockerfile --build-arg repo=${{ github.event.repository.name }} --build-arg environment=prd --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build --file ./maistodos/metabase/Dockerfile --build-arg repo=${{ github.event.repository.name }} --build-arg environment=prd --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       # Upload files to git hub arctifact
 
@@ -89,8 +89,8 @@ jobs:
           #Set TAG Image
           source ${{ github.workspace }}/image.env/image.env
           newTag=$(echo $IMAGE_TAG | cut -d ':' -f2)
-          oldTag=$(grep -m1 -e "newTag:" ./infra/PRD_Argo_Configs/deployments/desafio-maistodos/metabase/${{ github.event.repository.name }}/overlays/kustomization.yaml | cut -d ':' -f2)
-          sed -i "s|$oldTag| $newTag|" ./infra/PRD_Argo_Configs/deployments/desafio-maistodos/metabase/${{ github.event.repository.name }}/overlays/kustomization.yaml
+          oldTag=$(grep -m1 -e "newTag:" ./maistodos/infra/PRD_Argo_Configs/deployments/desafio-maistodos/metabase/${{ github.event.repository.name }}/overlays/kustomization.yaml | cut -d ':' -f2)
+          sed -i "s|$oldTag| $newTag|" ./maistodos/infra/PRD_Argo_Configs/deployments/desafio-maistodos/metabase/${{ github.event.repository.name }}/overlays/kustomization.yaml
           cd ./infra/PRD_Argo_Configs 
           #Git Add e Push Project
           git add . && git commit -am "Editando ${{ github.event.repository.name }} em PRD - $newTag"
