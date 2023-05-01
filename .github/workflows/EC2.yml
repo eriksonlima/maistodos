@@ -8,8 +8,11 @@ on:
       - 'infra/modules/**'
       - 'infra/eks/**'
       - 'infra/network/**'
+      - 'infra/PRD_Argo_Configs/**'
+      - '.github/workflows/ARGO.yml'
       - '.github/workflows/EKS.yml'  
       - '.github/workflows/NETWORK.yml'
+      
 
 jobs:
 
