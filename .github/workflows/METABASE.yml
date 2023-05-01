@@ -43,7 +43,6 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          git clone https://github.com/eriksonlima/maistodos.git
           echo export IMAGE_TAG="SNAPSHOT-$(git rev-parse --short "$GITHUB_SHA")" > image.env
           source image.env
           docker build --file ./maistodos/metabase/Dockerfile --build-arg repo=${{ github.event.repository.name }} --build-arg environment=prd --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -54,7 +53,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: ${{ github.workspace }}/image.env
+          path: ${{ github.workspace }}/image.env/image.env
           retention-days: 1
 
    # Deploy stage
@@ -78,7 +77,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: my-artifact
-          path: ${{ github.workspace }}/image.env
+          path: ${{ github.workspace }}/image.env/image.env
           
       - if: ${{ inputs.apply }} == true
         name: Deploy ${{ github.event.repository.name }} em EKS
