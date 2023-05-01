@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+    name: desafio-maistodos
+    namespace: argocd
+spec:
+    description: Arquivos ambiente de Desafio MaisTodos
+    sourceRepos:
+    - "*"       # Applications vinculadas a este projeto podem monitorar qualquer repositório no gitlab.
+    destinations:
+    - namespace: '*'   # Appications vinculadas a este projeto podem ser deployadas em qualquer namespace que comece com teste.
+      server: 'https://AE30948FCE5FDDB41BBDCADE235FBC79.sk1.us-east-1.eks.amazonaws.com'
+
+    # Só é permitido o argo criar namespaces dentro do cluster.
+    clusterResourceWhitelist:
+    - group: ''
+      kind: 'Namespace'
+
+    # Só é permitido ao argo deployar deployments, services and ingresses dentro do namespace.
+    namespaceResourceWhitelist:
+    - group: 'apps'
+      kind: Deployment
+    - group: ''
+      kind: Service
+    - group: 'networking.k8s.io'
+      kind: Ingress
+    - group: 'v1'
+      kind: Pod
+    - group: 'apps/v1'
+      kind: ReplicaSet

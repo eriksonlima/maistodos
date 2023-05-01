@@ -1,0 +1,7 @@
+bases:
+    - ../bases
+
+images:
+- name: 021708085540.dkr.ecr.us-east-1.amazonaws.com/eriksonlima/maistodos/metabase
+  newName: 021708085540.dkr.ecr.us-east-1.amazonaws.com/eriksonlima/maistodos/metabase
+  newTag: SNAPSHOT-1.0-76d71e4

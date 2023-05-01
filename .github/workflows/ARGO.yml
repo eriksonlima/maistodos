@@ -1,0 +1,65 @@
+
+name: Deploy [Producao]
+on: 
+  push:
+    branches:
+      - master
+
+# Start a Project Run Runner
+
+jobs:
+  Prd_Setup_Projects:
+    runs-on: self-hosted
+    
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+ # Logging EKS PRD  
+      - name: Login EKS
+        run: |
+          aws eks --profile=default --region=us-east-1 update-kubeconfig --name maistodos      
+ 
+ # Apply Projects
+      - name: Setup Projects
+        env: 
+         name: prd
+        run: |
+          kubectl apply -f ./infra/PRD_Argo_Configs/argo-projects
+
+
+# Start a Project Run Runner
+
+  Prd_Setup_Applications:
+    needs: Prd_Setup_Projects
+    runs-on: self-hosted
+    
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+# Logging EKS LAB  
+      - name: Login EKS
+        run: |
+          aws eks --profile=default --region=us-east-1 update-kubeconfig --name maistodos   
+
+# Apply Applications             
+      - name: Apply Applications
+        env: 
+         name: prd
+        run: |
+          kubectl apply -f ./infra/PRD_Argo_Configs/argo-applications/prd/metabase
+
+
+
+    

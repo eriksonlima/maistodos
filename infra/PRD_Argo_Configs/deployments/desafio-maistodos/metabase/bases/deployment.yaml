@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metabase
+  namespace: desafio-maistodos
+spec:
+  revisionHistoryLimit: 1
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metabase
+  template:
+    metadata:
+      labels:
+        app: metabase
+    spec:
+      containers:             
+      - image: 686781816359.dkr.ecr.us-east-1.amazonaws.com/korporate/stacy-api:RELEASE-1.0-6ed1461
+        imagePullPolicy: IfNotPresent    
+        name: metabase
+        resources:
+          limits:
+            cpu: "2"
+            memory: 1Gi
+          requests:
+            cpu: 250m
+            memory: 500Mi
+      nodeSelector:
+        environment: metabase
+      restartPolicy: Always
