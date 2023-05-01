@@ -66,7 +66,7 @@ jobs:
         env: 
          name: prd
         run: |
-          kubectl apply -f ./infra/PRD_Argo_Configs/argo-applications/metabase
+          kubectl apply -f ./infra/PRD_Argo_Configs/argo-applications/desafio-maistodos/metabase
 
 
 
